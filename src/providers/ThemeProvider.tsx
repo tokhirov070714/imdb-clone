@@ -16,7 +16,7 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
 
             try {
 
-                console.log(saved);
+                // console.log(saved);
                 
                 return JSON.parse(saved)
 

@@ -8,12 +8,19 @@ import { Badge } from "./ui/badge";
 import { useTheme } from "@/providers/ThemeProvider";
 import { useUser } from "@/providers/UserProvider";
 import { useSettings } from "@/providers/SettingsProvider";
+import { useTrailer } from "@/providers/TrailerProvider";
+
+import { Player } from "./custom/Player";
 
 function Layout() {
 	const { saved } = useSaved();
 	const { theme, setTheme } = useTheme()
 	const { user } = useUser()
 	const { lang, region, setLang, setRegion } = useSettings()
+
+	const { trailerKey } = useTrailer()
+	console.log(trailerKey);
+
 
 	const handleLang = (e: any) => {
 		setLang(e.target.value);
@@ -174,7 +181,25 @@ function Layout() {
 				© {new Date().getFullYear()} IMDb Clone — Created with ❤️ by
 				Dotlabs
 			</footer>
-		</div>
+
+			{
+
+				trailerKey && (
+
+					<Player>
+						<iframe
+							className="w-[300px] h-[180px] fixed right-10 bottom-10"
+							src={`https://www.youtube.com/embed/${trailerKey}`}
+							title="Trailer Player"
+							allowFullScreen
+						/>
+					</Player>
+
+				)
+
+			}
+
+		</div >
 	);
 }
 

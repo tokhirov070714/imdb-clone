@@ -17,7 +17,7 @@ const UserProvider: React.FC<Props> = ({ children }) => {
 
         axiosInstance.get(`/account/${import.meta.env.VITE_TMDB_ID}`).then((res) => {
 
-            console.log(res.data);
+            // console.log(res.data);
             setUser(res.data)
 
 
